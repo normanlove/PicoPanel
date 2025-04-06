@@ -69,7 +69,3 @@ Connect via case USB port (recommended)
 Monitor Thonny shell for IP address (e.g., http://192.168.1.100)
 
 
-
-
-License
-Free for personal, non-commercial use. Please
