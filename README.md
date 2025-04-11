@@ -11,8 +11,11 @@ external solution will need to be provided.
 Hardware Needed
 
 Raspberry Pi Pico WH/Pico2 WH - https://thepihut.com/products/raspberry-pi-pico-w?srsltid=AfmBOopHFCOey5r9MEC8z6exq6pL8QwCFH5AHIJgByZxxQt8hs8o0ljc&variant=41952994787523
+
 sb components 3.3v relay HAT for pico - https://shop.sb-components.co.uk/collections/pico-hats/products/pico-3v-relay-hat
+
 micro usb cable/power source
+
 4x DuPont Male/Female (but just female will do if you want to cut the wires. - https://amzn.eu/d/3m8cm1M
 
 Hardware Setup
