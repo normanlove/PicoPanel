@@ -62,3 +62,11 @@ to long press the power button to switch off, simple change the pulse duration o
 pressed for, up to a maximum of 45 seconds.
 
 
+Feel free to mess around with the code and change stuff to your liking. This was a learning to code project for me so there could be things done incorrectly or inefficiently.
+Feel free to change the default pulse time of the button presses to what is most commonly useful for your situation or increase/reduce the maximum pulse time if needed.
+
+IT IS HIGHLY RECOMMENDED YOU DO NOT EXPOSE THIS WEB INTERFACE TO THE OPEN INTERNET. there is no security system preventing anyone from using the webpage so anyone with access to the
+page itself will be able to control your PC power buttons. if you wish for this to be used on the open internet, please add some redimentary security (such as a password)
+system first for obvious reasons. Or, alternatively wait until i learn how to do it myself and add it in a future version.
+
+
