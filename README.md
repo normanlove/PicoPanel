@@ -8,6 +8,8 @@ as the Pico is powered, this will work when your PC is off/cold state. If you ha
 to porivde usb power whilst the PC is off then you can power this from your motherboard easily, if not then an
 external solution will need to be provided.
 
+You can view a short video of PicoPanel operating here - https://www.youtube.com/shorts/cYf7eWVLETs
+
 Hardware Needed
 
 Raspberry Pi Pico WH/Pico2 WH - https://thepihut.com/products/raspberry-pi-pico-w?srsltid=AfmBOopHFCOey5r9MEC8z6exq6pL8QwCFH5AHIJgByZxxQt8hs8o0ljc&variant=41952994787523
