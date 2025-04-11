@@ -9,12 +9,12 @@ MAX_PULSE = 45.0
 LED_PIN = "LED"        
 
 
-power_relay = Pin(6, Pin.OUT, value=0)  # Initialize OFF
-reset_relay = Pin(7, Pin.OUT, value=0)   # Initialize OFF
+power_relay = Pin(6, Pin.OUT, value=0)  
+reset_relay = Pin(7, Pin.OUT, value=0)   
 
 
-SSID = "YOUR_SSID"
-PASSWORD = "YOUR_WIFI_PASSWORD"
+SSID = "YOUR_SSID" # <- CHANGE THIS TO YOUR WIFI SSID NAME, IN QUOTES
+PASSWORD = "YOUR_WIFI_PASSWORD" # <- CHANGE THIS TO YOUR WIFI PASSWORD, IN QUOTES
 
 
 html_template = """<!DOCTYPE html>
