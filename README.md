@@ -10,6 +10,16 @@ external solution will need to be provided.
 
 You can view a short video of PicoPanel operating here - https://www.youtube.com/shorts/cYf7eWVLETs
 
+<iframe
+	width="560"
+	height="315"
+	src="https://www.youtube.com/embed/cYf7eWVLETs"
+	title="YouTube video player"
+	frameborder="0"
+	allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+	allowfullscreen
+></iframe>
+
 Hardware Needed
 
 Raspberry Pi Pico WH/Pico2 WH - https://thepihut.com/products/raspberry-pi-pico-w?srsltid=AfmBOopHFCOey5r9MEC8z6exq6pL8QwCFH5AHIJgByZxxQt8hs8o0ljc&variant=41952994787523
