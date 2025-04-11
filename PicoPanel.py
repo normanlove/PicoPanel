@@ -3,15 +3,19 @@ import socket
 from machine import Pin
 import time
 
-PULSE_DURATION = 0.2  
+
+PULSE_DURATION = 0.25  
 MAX_PULSE = 45.0       
 LED_PIN = "LED"        
 
-power_pin = Pin(0, Pin.OUT, value=0)  # GP0 → POWER+
-reset_pin = Pin(1, Pin.OUT, value=0)  # GP1 → RESET+
+
+power_relay = Pin(6, Pin.OUT, value=0)  # Initialize OFF
+reset_relay = Pin(7, Pin.OUT, value=0)   # Initialize OFF
+
 
 SSID = "YOUR_SSID"
 PASSWORD = "YOUR_WIFI_PASSWORD"
+
 
 html_template = """<!DOCTYPE html>
 <html>
@@ -164,7 +168,6 @@ html_template = """<!DOCTYPE html>
             }}
         }}
         
-        /* Animation for button presses */
         @keyframes pulse {{
             0% {{ transform: scale(1); }}
             50% {{ transform: scale(1.05); }}
@@ -208,13 +211,12 @@ html_template = """<!DOCTYPE html>
             
             <div class="status-card">
                 Current pulse duration: <span class="pulse-display">{0} seconds</span>
-                <div><small>LED will blink for this duration when activated</small></div>
+                <div><small>Relay will activate for this duration when triggered</small></div>
             </div>
         </div>
     </div>
     
     <script>
-        // Add pulse animation when buttons are clicked
         document.querySelectorAll('.pulse-form').forEach(form => {{
             form.addEventListener('submit', function() {{
                 this.querySelector('button').classList.add('pulse');
@@ -227,6 +229,7 @@ html_template = """<!DOCTYPE html>
 </body>
 </html>
 """
+
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
@@ -248,20 +251,20 @@ def pulse_led(duration):
     time.sleep(duration)
     led.off()
 
-def generate_pulse(pin, duration):
-    """Generate pulse with proper timing"""
-    pin.on()
+def activate_relay(relay, duration):
+    """Activate relay for specified duration (active LOW)"""
+    relay.value(1)  # Turn relay ON
     pulse_led(duration)
-    pin.off()
+    relay.value(0)  # Turn relay OFF
 
 def handle_request(client):
     global PULSE_DURATION
     request = client.recv(1024).decode()
     
     if "GET /power" in request:
-        generate_pulse(power_pin, PULSE_DURATION)
+        activate_relay(power_relay, PULSE_DURATION)
     elif "GET /reset" in request:
-        generate_pulse(reset_pin, PULSE_DURATION)
+        activate_relay(reset_relay, PULSE_DURATION)
     elif "GET /set_pulse?" in request:
         try:
             new_duration = float(request.split('duration=')[1].split(' ')[0])
@@ -274,6 +277,7 @@ def handle_request(client):
     client.send("HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n")
     client.send(html)
     client.close()
+
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('0.0.0.0', 80))
