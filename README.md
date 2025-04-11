@@ -10,36 +10,16 @@ external solution will need to be provided.
 
 Hardware Needed
 
-Raspberry Pi Pico W/Pico2 W (Pico WH/Pico 2 WH recommended so no soldering required)
-4x Female DuPoint wires (female both ends, if you're using WH versions of pico or have headers soldered on)
-a micro USB > 9-pin USB motherboard cable or 2x extra dupont female wires if powering from header on board instead
-or just a micro usb cable to connect to a USB port for power
+Raspberry Pi Pico WH/Pico2 WH - https://thepihut.com/products/raspberry-pi-pico-w?srsltid=AfmBOopHFCOey5r9MEC8z6exq6pL8QwCFH5AHIJgByZxxQt8hs8o0ljc&variant=41952994787523
+sb components 3.3v relay HAT for pico - https://shop.sb-components.co.uk/collections/pico-hats/products/pico-3v-relay-hat
+micro usb cable/power source
+4x DuPont Male/Female (but just female will do if you want to cut the wires. - https://amzn.eu/d/3m8cm1M
 
 Hardware Setup
 
-Power Connection
-Simple USB Method:
-
-Connect Pico W directly to any available USB 2.0/3.0 port on your PC case - This is the Safest option for beginners
-
-Advanced Power Connection (Motherboard)
-For permanent installations (Advanced Users):
-
-Pico W VSYS (Pin 39) → 5V (USB header pin 1 - usually red wire)
-Pico W GND (Pin 38) → GND (USB header pin 10 - usually black wire)
-Warning: Verify your motherboard USB header pinout before connecting
-
-Ground (GND) Connections
-Essential GND pins on Pico W:
-
-Primary GND (Pin 3) → Motherboard POWER- header
-Secondary GND (Pin 8) → Motherboard RESET- header 
-
-Control Signal Connections
-Copy
-Pico W GP0 (Pin 1/GP0)  → Motherboard POWER+ header
-Pico W GP1 (Pin 2/GP1)  → Motherboard RESET+ header
-
+Simply plug the relay HAT into the pico W, pay attention tot he underside nof the relay hat for the correct orientation. Then, connect the male side of the dupont wires
+to the NO and CON terminals on each end of the pi (NO = negative, CON = positive). Then, connec tthe other side of these wires (the female side) to the power and reset 
+front panel connectors on your motherboard. the relay on the same side as the usb connector is for the power switch, the opposite for the reset. all done!
 
 Software Installation
 
@@ -55,17 +35,25 @@ Select: MicroPython (Raspberry Pi Pico)
 Port: Auto-detected when Pico is connected via USB
 
 Deployment
-Open script in Thonny
+
+Open script in Thonny, add your SSID and wifi passsword into the code below (it should appear at the top)
 
 Set WiFi credentials:
 
-SSID = "YOUR_NETWORK"  # 2.4GHz networks recommended
+SSID = "YOUR_NETWORK" 
 PASSWORD = "YOUR_PASSWORD"
 Save to Pico as main.py for auto-run
 
-Usage
-Connect via case USB port (recommended)
+it is recommended you un the script through thonny first to check it works, as it will also output the IP address you will use to access your web interface.
 
-Monitor Thonny shell for IP address (e.g., http://192.168.1.100)
+Usage
+
+Make sure the pico is connected to a power source that is on constantly. you can usually set your motherboard BIOS to provide usb power even in an OFF state. This
+way you can just power the pico from the PC itself.
+
+Once on and connected. Connect to the IP address that was displayed in the thonny console on your web browser and you will be able to control your power and reset buttons
+from your device! simply just hit whichever button you wish to activate. If you wish to change how long you press the button for, for example incase of a hard crash you need
+to long press the power button to switch off, simple change the pulse duration of the button press in the prompt below and this will change how long the button of choice is
+pressed for, up to a maximum of 45 seconds.
 
 
